@@ -1,0 +1,22 @@
+{
+  "name": "violet-visual",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^2.0.0",
+    "@astrojs/node": "^8.3.4",
+    "@astrojs/svelte": "^5.0.0",
+    "astro": "^4.0.1",
+    "astro-remote": "^0.3.3",
+    "reading-time": "^1.5.0",
+    "rehype-external-links": "^3.0.0",
+    "remark-gfm": "^4.0.0",
+    "remark-smartypants": "^2.0.0"
+  }
+}

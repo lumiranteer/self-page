@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Bio from '../../components/Bio.astro';
+import getPostData from '../../utils/getPostData';
+import { marked } from 'marked';
+export const prerender = false;
+// export async function getStaticPaths() {
+//   const data = await Astro.glob("../../data/blog-posts/*.md")
+
+//   return data.map(p => ({
+//       params: { slug: p.file.split('/').pop().split('.').shift() },
+//       props: { post: p },
+//     }));
+// // }
+// export async function getStaticPaths() {
+
+// const data = (await fetch('https://api.lumirant.top/api/v1/getPostsList').then((response) =>
+// response.json()
+// )).data;
+// const pages = [];
+// data.forEach(post => {
+//   pages.push({
+//     slug: post.file_name,
+//     file: '/' + post.file_name,
+//     title: post.title,
+//     text: "",
+//     frontmatter: {
+//       title: post.head,
+//       description: post.introduce,
+//       publishDate: post.updated_at,
+//     },
+//   });
+// });
+
+// return pages.map(p => ({
+//     params: { slug: p.file.split('/').pop().split('.').shift() },
+//     props: { post: p },
+//   }));
+// }
+const { slug } = getPostData(Astro.params.slug);
+const contentData = (await fetch("https://api.lumirant.top/api/v1/getPostContent?alias=" + slug ).then(res => res.json())).data;
+const content = marked.parse(contentData.content);
+// const { Content, frontmatter } = Astro.props.post;
+// const { title, description, publishDate } = frontmatter;
+const permalink = `${Astro.site.href}blog/${slug}`;
+---
+
+<!-- <BaseLayout title={title} description={description} permalink={permalink} current="blog">
+
+  <header>
+    <p>{publishDate}</p>
+    <h1>{title}</h1>
+    <hr />
+  </header>
+  <div class="container">
+    <article class="content">
+      <Content />
+    </article>
+    <hr />
+    <Bio />
+  </div>
+</BaseLayout> -->
+
+<BaseLayout title={contentData.head_info.title} description={contentData.head_info.description} permalink={permalink} current="blog">
+  <header>
+    <p>{contentData.head_info.publishDate}</p>
+    <h1>{contentData.head_info.title}</h1>
+    <hr />
+  </header>
+  <div class="container">
+    <article class="content" set:html={content} />
+    </article>
+    <hr />
+    <Bio />
+  </div>
+</BaseLayout>
+
+<style>
+  header {
+    text-align: center;
+  }
+
+  header h1 {
+    margin-bottom: 0.7em;
+  }
+
+  header p {
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    font-family: var(--font-family-sans);
+    font-weight: 600;
+  }
+
+  header hr {
+    min-width: 100px;
+    width: 30%;
+  }
+</style>

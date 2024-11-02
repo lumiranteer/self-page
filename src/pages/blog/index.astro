@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'Blog';
+const description = 'Latest articles.';
+const permalink = `${Astro.site.href}blog`;
+export const prerender = false;
+
+const data = (await fetch('https://api.lumirant.top/api/v1/getPostsList').then((response) =>
+  response.json()
+)).data;
+// console.log(data);
+// allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf());
+---
+
+<BaseLayout title={title} description={description} permalink={permalink} current="blog">
+  <div class="container">
+    <h1>博客</h1>
+    {data.map((post, index) => {
+      const updatedTime = post.updated_at;
+      // 将时间戳转换为字符串格式
+      const timeString = new Date(updatedTime * 1000).toISOString()
+      const dateString = timeString.split('T');
+      const HoursString = dateString[1].split('.');
+        
+
+      // 使用时间字符串
+      const time = (new Date(dateString[0] + " " + HoursString[0])).getTime();
+      const now = Date.now();
+      const diff = now - time;
+
+      const minute = 60 * 1000;
+      const hour = 60 * minute;
+      const day = 24 * hour;
+
+      // 计算年、月、日的差异
+      const diffYears = Math.floor(diff / (365 * day));
+      const diffMonths = Math.floor((diff % (365 * day)) / (30 * day));
+      const diffDays = Math.floor((diff % (30 * day)) / day);
+      const diffHours = Math.floor((diff % day) / hour);
+      const diffMinutes = Math.floor((diff % hour) / minute);
+
+      const diffStr = diffYears > 0 ? `${diffYears}年前` :
+              diffMonths > 0 ? `${diffMonths}个月前` :
+              diffDays > 0 ? `${diffDays}天前` :
+              diffHours > 0 ? `${diffHours}小时前` :
+              diffMinutes > 0 ? `${diffMinutes}分钟前` :
+              '刚刚';
+    const href = `/blog/${post.alias}`;
+    return (
+          <div>
+            { index !== 0 && <hr /> }
+            <div class="post-item">
+              <h2>
+                <a href={href}>{post.title}</a>
+              </h2>
+              <p>{post.introduce}</p>
+              <div class="post-item-footer">
+                <span class="post-item-date">— 最后更新： {diffStr}</span>
+              </div>
+            </div>
+          </div>
+        )
+    })}
+  </div>
+</BaseLayout>
+
+<style>
+  h2,
+  .post-item-footer {
+    font-family: var(--font-family-sans);
+    font-weight: 700;
+  }
+
+  .post-item-date {
+    color: var(--text-secondary);
+    text-align: left;
+    text-transform: uppercase;
+    margin-right: 16px;
+  }
+
+  hr {
+    margin: 60px auto;
+  }
+</style>
