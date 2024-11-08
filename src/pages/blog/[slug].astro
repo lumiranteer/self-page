@@ -38,7 +38,13 @@ export const prerender = false;
 //   }));
 // }
 const { slug } = getPostData(Astro.params.slug);
-const contentData = (await fetch("https://api.lumirant.top/api/v1/getPostContent?alias=" + slug ).then(res => res.json())).data;
+if(import.meta.env.PROD) {
+  var uri = process.env.PUBLIC_API_URI + "getPostContent?alias=" + slug;
+}
+else if(import.meta.env.DEV) {
+  var uri = import.meta.env.PUBLIC_API_URI + "getPostContent?alias=" + slug;
+}
+const contentData = (await fetch(uri).then(res => res.json())).data;
 const content = marked.parse(contentData.content);
 // const { Content, frontmatter } = Astro.props.post;
 // const { title, description, publishDate } = frontmatter;

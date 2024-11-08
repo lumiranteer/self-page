@@ -6,7 +6,14 @@ const description = 'Latest articles.';
 const permalink = `${Astro.site.href}blog`;
 export const prerender = false;
 
-const data = (await fetch('https://api.lumirant.top/api/v1/getPostsList').then((response) =>
+if(import.meta.env.PROD) {
+  var uri = process.env.PUBLIC_API_URI;
+}
+else if(import.meta.env.DEV) {
+  var uri = import.meta.env.PUBLIC_API_URI;
+}
+
+const data = (await fetch(uri + 'getPostsList').then((response) =>
   response.json()
 )).data;
 // console.log(data);

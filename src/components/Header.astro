@@ -13,11 +13,125 @@ const { current = '' } = Astro.props;
     max-width: 1400px;
     padding: 2em;
     width: 100%;
+    transition: all .2s;
+  }
+
+  header.nav-header.header-sticky {
+    position: sticky;
+    z-index: 10;
+    top: 0;
+  }
+
+  header.nav-header.sticky-bar.header-sticky.nav-sticky-active {
+      background-color: rgb(255 255 255 / 60%);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 0px;
+      padding: 20px 150px 20px 150px;
+      --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);
+      --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+      box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+      transition: all .2s;
+      max-width: unset;
+      width: 100%;
+      align-items: center;
+    }
+
+  @media (max-width: 575px) {
+    header {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 2em 2em 0em 2em;
+    }
   }
 </style>
 
-<header>
+<div id="header-sentinal"></div>
+<header class="nav-header">
   <Logo />
   <Nav current={current} />
   <ViewTransitions fallback="animate" />
 </header>
+  <Nav current={current} classType="sticky-bar" />
+
+  <script is:inline>
+    // 代码灵感来源于skywt.cn
+    //Astro对于document的支持不太友好
+    var observer;
+    const headerEl = document.querySelector(".nav-header");
+    function addNavObserver(navEl,sentinalEl,strict = false) {
+      const screenWidth = document.body.clientWidth
+      if (!headerEl || !sentinalEl) return;
+      observer = new window.IntersectionObserver((e) => {
+        var isSticky = false;
+        if(strict && !e[0].isIntersectin && e[0].boundingClientRect.top <= 0) isSticky = true;
+        else if(!strict && !e[0].isIntersectin && e[0].boundingClientRect.top < 0) isSticky = true;
+        else isSticky = false;
+        if (isSticky) {
+          if(screenWidth > 575) navEl.classList.add("nav-sticky-active");
+          else navEl.classList.add("nav-sticky-active");
+        } else {
+          if(screenWidth > 575) navEl.classList.remove("nav-sticky-active");
+          else navEl.classList.remove("nav-sticky-active");
+        }
+      });
+      observer.observe(sentinalEl);
+    }
+  
+    function removeNavObserver() {
+      if (observer) observer.disconnect();
+      observer = null;
+    }
+  
+    document.addEventListener(
+      "astro:page-load",
+      () => {
+        getWindowInfo();
+      },
+      { once: false },
+    );
+  
+    document.addEventListener(
+      "astro:before-swap",
+      () => {
+        removeNavObserver();
+      },
+      { once: false },
+    );
+
+    const debounce = (fn, delay) => {
+      let timer;
+      return function() {
+        if (timer) {
+          clearTimeout(timer);
+        }
+        timer = setTimeout(() => {
+          fn();
+        }, delay);
+      }
+    };
+const getWindowInfo = () => {
+	const windowInfo = {
+		width: window.innerWidth,
+		hight: window.innerHeight
+	}
+  if(windowInfo.width > 575) {
+    let isSwiftPage = headerEl.getBoundingClientRect().x
+    var newHeaderEL;
+    if(isSwiftPage <= 0) newHeaderEL = document.querySelector(".nav-header");
+    else newHeaderEL = headerEl;
+    newHeaderEL.classList.add("sticky-bar","header-sticky");
+    removeNavObserver();
+    addNavObserver(newHeaderEL,document.querySelector("#header-sentinal"));
+  }
+  else{
+    document.querySelector(".nav-header").classList.remove("sticky-bar","header-sticky");
+    removeNavObserver();
+    addNavObserver(document.querySelector(".sticky-bar"),document.querySelector("#navbar-sentinal"));
+  }
+};
+const cancalDebounce = debounce(getWindowInfo, 500);
+
+window.addEventListener('resize', cancalDebounce);
+  </script>
