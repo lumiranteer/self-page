@@ -11,17 +11,17 @@ const $$ViewTransitions = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate`<meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback"${addAttribute(fallback, "content")}>`;
 }, "/home/runner/work/self-page/self-page/node_modules/astro/components/ViewTransitions.astro", void 0);
 
-var __freeze = Object.freeze;
-var __defProp = Object.defineProperty;
-var __template = (cooked, raw) => __freeze(__defProp(cooked, "raw", { value: __freeze(cooked.slice()) }));
-var _a;
+var __freeze$1 = Object.freeze;
+var __defProp$1 = Object.defineProperty;
+var __template$1 = (cooked, raw) => __freeze$1(__defProp$1(cooked, "raw", { value: __freeze$1(cooked.slice()) }));
+var _a$1;
 const $$Astro$3 = createAstro("https://lumirant.top");
 const $$BaseHead = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$3, $$props, $$slots);
   Astro2.self = $$BaseHead;
   const { title, description, permalink } = Astro2.props;
   const socialUrl = Astro2.site.href + "assets/social.png";
-  return renderTemplate(_a || (_a = __template(['<!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/x-icon" href="/favicon.ico"><!-- Primary Meta Tags --><title>', '</title><meta name="title"', '><meta name="description"', '><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url"', '><meta property="og:title"', '><meta property="og:description"', '><meta property="og:image"', '><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url"', '><meta property="twitter:title"', '><meta property="twitter:description"', '><meta property="twitter:image"', ">", "<!-- This is intentionally inlined to avoid FOUC --><script>\n  const root = document.documentElement\n  const theme = localStorage.getItem('theme')\n  if (\n    theme === 'dark' ||\n    (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)\n  ) {\n    root.classList.add('theme-dark')\n  } else {\n    root.classList.remove('theme-dark')\n  }\n<\/script>"])), title, addAttribute(title, "content"), addAttribute(description, "content"), addAttribute(permalink, "content"), addAttribute(title, "content"), addAttribute(description, "content"), addAttribute(socialUrl, "content"), addAttribute(permalink, "content"), addAttribute(title, "content"), addAttribute(description, "content"), addAttribute(socialUrl, "content"), renderComponent($$result, "ViewTransitions", $$ViewTransitions, {}));
+  return renderTemplate(_a$1 || (_a$1 = __template$1(['<!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/x-icon" href="/favicon.ico"><!-- Primary Meta Tags --><title>', '</title><meta name="title"', '><meta name="description"', '><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url"', '><meta property="og:title"', '><meta property="og:description"', '><meta property="og:image"', '><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url"', '><meta property="twitter:title"', '><meta property="twitter:description"', '><meta property="twitter:image"', ">", "<!-- This is intentionally inlined to avoid FOUC --><script>\n  const root = document.documentElement\n  const theme = localStorage.getItem('theme')\n  if (\n    theme === 'dark' ||\n    (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)\n  ) {\n    root.classList.add('theme-dark')\n  } else {\n    root.classList.remove('theme-dark')\n  }\n<\/script>"])), title, addAttribute(title, "content"), addAttribute(description, "content"), addAttribute(permalink, "content"), addAttribute(title, "content"), addAttribute(description, "content"), addAttribute(socialUrl, "content"), addAttribute(permalink, "content"), addAttribute(title, "content"), addAttribute(description, "content"), addAttribute(socialUrl, "content"), renderComponent($$result, "ViewTransitions", $$ViewTransitions, {}));
 }, "/home/runner/work/self-page/self-page/src/components/BaseHead.astro", void 0);
 
 const $$Logo = createComponent(($$result, $$props, $$slots) => {
@@ -208,21 +208,104 @@ const $$Astro$2 = createAstro("https://lumirant.top");
 const $$Nav = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$2, $$props, $$slots);
   Astro2.self = $$Nav;
-  const { current = "" } = Astro2.props;
-  return renderTemplate`${maybeRenderHead()}<nav data-astro-cid-dmqpwcec> <a${addAttribute(current === "" ? "selected" : "", "class")} href="/" data-astro-cid-dmqpwcec>首页</a> <a${addAttribute(current === "blog" ? "selected" : "", "class")} href="/blog" data-astro-cid-dmqpwcec>博客</a> <a${addAttribute(current === "about" ? "selected" : "", "class")} href="/about" data-astro-cid-dmqpwcec>关于</a> <div class="theme-toggle-container" data-astro-cid-dmqpwcec> ${renderComponent($$result, "ThemeToggleButton", ThemeToggleButton, { "client:load": true, "client:component-hydration": "load", "client:component-path": "/home/runner/work/self-page/self-page/src/components/ThemeToggleButton.svelte", "client:component-export": "default", "data-astro-cid-dmqpwcec": true })} </div> </nav>`;
+  var { current = "", classType = "normal-bar" } = Astro2.props;
+  return renderTemplate`${maybeRenderHead()}<div id="navbar-sentinal" data-astro-cid-dmqpwcec></div> <nav${addAttribute(classType, "class")} id="nav" data-astro-cid-dmqpwcec> <a${addAttribute(current === "" ? "selected" : "", "class")} href="/" data-astro-cid-dmqpwcec>首页</a> <a${addAttribute(current === "blog" ? "selected" : "", "class")} href="/blog" data-astro-cid-dmqpwcec>博客</a> <a${addAttribute(current === "about" ? "selected" : "", "class")} href="/about" data-astro-cid-dmqpwcec>关于</a> <div class="theme-toggle-container" data-astro-cid-dmqpwcec> ${renderComponent($$result, "ThemeToggleButton", ThemeToggleButton, { "client:load": true, "client:component-hydration": "load", "client:component-path": "/home/runner/work/self-page/self-page/src/components/ThemeToggleButton.svelte", "client:component-export": "default", "data-astro-cid-dmqpwcec": true })} </div> </nav>`;
 }, "/home/runner/work/self-page/self-page/src/components/Nav.astro", void 0);
 
+var __freeze = Object.freeze;
+var __defProp = Object.defineProperty;
+var __template = (cooked, raw) => __freeze(__defProp(cooked, "raw", { value: __freeze(cooked.slice()) }));
+var _a;
 const $$Astro$1 = createAstro("https://lumirant.top");
 const $$Header = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$1, $$props, $$slots);
   Astro2.self = $$Header;
   const { current = "" } = Astro2.props;
-  return renderTemplate`${maybeRenderHead()}<header data-astro-cid-3ef6ksr2> ${renderComponent($$result, "Logo", $$Logo, { "data-astro-cid-3ef6ksr2": true })} ${renderComponent($$result, "Nav", $$Nav, { "current": current, "data-astro-cid-3ef6ksr2": true })} ${renderComponent($$result, "ViewTransitions", $$ViewTransitions, { "fallback": "animate", "data-astro-cid-3ef6ksr2": true })} </header>`;
+  return renderTemplate(_a || (_a = __template(["", '<div id="header-sentinal" data-astro-cid-3ef6ksr2></div> <header class="nav-header" data-astro-cid-3ef6ksr2> ', " ", " ", " </header> ", ` <script>
+    // \u4EE3\u7801\u7075\u611F\u6765\u6E90\u4E8Eskywt.cn
+    //Astro\u5BF9\u4E8Edocument\u7684\u652F\u6301\u4E0D\u592A\u53CB\u597D
+    var observer;
+    const headerEl = document.querySelector(".nav-header");
+    function addNavObserver(navEl,sentinalEl,strict = false) {
+      const screenWidth = document.body.clientWidth
+      if (!headerEl || !sentinalEl) return;
+      observer = new window.IntersectionObserver((e) => {
+        var isSticky = false;
+        if(strict && !e[0].isIntersectin && e[0].boundingClientRect.top <= 0) isSticky = true;
+        else if(!strict && !e[0].isIntersectin && e[0].boundingClientRect.top < 0) isSticky = true;
+        else isSticky = false;
+        if (isSticky) {
+          if(screenWidth > 575) navEl.classList.add("nav-sticky-active");
+          else navEl.classList.add("nav-sticky-active");
+        } else {
+          if(screenWidth > 575) navEl.classList.remove("nav-sticky-active");
+          else navEl.classList.remove("nav-sticky-active");
+        }
+      });
+      observer.observe(sentinalEl);
+    }
+  
+    function removeNavObserver() {
+      if (observer) observer.disconnect();
+      observer = null;
+    }
+  
+    document.addEventListener(
+      "astro:page-load",
+      () => {
+        getWindowInfo();
+      },
+      { once: false },
+    );
+  
+    document.addEventListener(
+      "astro:before-swap",
+      () => {
+        removeNavObserver();
+      },
+      { once: false },
+    );
+
+    const debounce = (fn, delay) => {
+      let timer;
+      return function() {
+        if (timer) {
+          clearTimeout(timer);
+        }
+        timer = setTimeout(() => {
+          fn();
+        }, delay);
+      }
+    };
+const getWindowInfo = () => {
+	const windowInfo = {
+		width: window.innerWidth,
+		hight: window.innerHeight
+	}
+  if(windowInfo.width > 575) {
+    let isSwiftPage = headerEl.getBoundingClientRect().x
+    var newHeaderEL;
+    if(isSwiftPage <= 0) newHeaderEL = document.querySelector(".nav-header");
+    else newHeaderEL = headerEl;
+    newHeaderEL.classList.add("sticky-bar","header-sticky");
+    removeNavObserver();
+    addNavObserver(newHeaderEL,document.querySelector("#header-sentinal"));
+  }
+  else{
+    document.querySelector(".nav-header").classList.remove("sticky-bar","header-sticky");
+    removeNavObserver();
+    addNavObserver(document.querySelector(".sticky-bar"),document.querySelector("#navbar-sentinal"));
+  }
+};
+const cancalDebounce = debounce(getWindowInfo, 500);
+
+window.addEventListener('resize', cancalDebounce);
+  <\/script>`])), maybeRenderHead(), renderComponent($$result, "Logo", $$Logo, { "data-astro-cid-3ef6ksr2": true }), renderComponent($$result, "Nav", $$Nav, { "current": current, "data-astro-cid-3ef6ksr2": true }), renderComponent($$result, "ViewTransitions", $$ViewTransitions, { "fallback": "animate", "data-astro-cid-3ef6ksr2": true }), renderComponent($$result, "Nav", $$Nav, { "current": current, "classType": "sticky-bar", "data-astro-cid-3ef6ksr2": true }));
 }, "/home/runner/work/self-page/self-page/src/components/Header.astro", void 0);
 
 const $$Footer = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate`${maybeRenderHead()}<footer data-astro-cid-sz7xmlte> <span data-astro-cid-sz7xmlte>
-&copy; 2023 - ${(/* @__PURE__ */ new Date()).getFullYear()} Lumirant.top All Right Reserved<br data-astro-cid-sz7xmlte> <div style="display: flex;justify-content: center;gap: 10px;" data-astro-cid-sz7xmlte> <div style="display: flex;align-items: flex-start;gap: 3px;" data-astro-cid-sz7xmlte> <img src="../../assets/mpsbeian.png" style="width: 16px;" data-astro-cid-sz7xmlte><a href="https://beian.mps.gov.cn/#/query/webSearch?code=44030002005026" rel="noreferrer" target="_blank" data-astro-cid-sz7xmlte>粤公网安备44030002005026</a> </div> <a href="http://beian.miit.gov.cn" data-astro-cid-sz7xmlte>粤ICP备2024313822号</a> </div> </span> </footer> `;
+&copy; 2023 - ${(/* @__PURE__ */ new Date()).getFullYear()} Lumirant.top All Right Reserved<br data-astro-cid-sz7xmlte> <div class="beian" data-astro-cid-sz7xmlte> <div style="display: flex;align-items: flex-start;gap: 3px;" data-astro-cid-sz7xmlte> <img src="../../assets/mpsbeian.png" style="width: 16px;" data-astro-cid-sz7xmlte><a href="https://beian.mps.gov.cn/#/query/webSearch?code=44030002005026" rel="noreferrer" target="_blank" data-astro-cid-sz7xmlte>粤公网安备44030002005026</a> </div> <a href="http://beian.miit.gov.cn" data-astro-cid-sz7xmlte>粤ICP备2024313822号</a> </div> </span> </footer> `;
 }, "/home/runner/work/self-page/self-page/src/components/Footer.astro", void 0);
 
 const $$Astro = createAstro("https://lumirant.top");
