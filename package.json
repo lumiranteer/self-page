@@ -6,7 +6,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "clean": "rimraf node_modules"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -19,6 +20,7 @@
     "rehype-external-links": "^3.0.0",
     "remark-gfm": "^4.0.0",
     "remark-smartypants": "^2.0.0",
+    "rimraf": "^6.0.1",
     "typescript": "^5.6.3"
   }
 }

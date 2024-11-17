@@ -2,10 +2,14 @@
 const { blogSubTitle = '' } = Astro.props;
 ---
 
-<div class="home-container">
+<div class="home-container" id="first-screen">
     <div class="home-copy">
       <h1>{blogSubTitle}</h1>
       <h4 style="font-weight: 200;">Where the Heart thinks, the action follows.</h4>
+      <div class="mouse-hint">
+        <?xml version="1.0" encoding="UTF-8"?><svg width="16" height="16" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M24 16H12V32C12 38.6274 17.3726 44 24 44C30.6274 44 36 38.6274 36 32V16H24Z" fill="none" stroke="#777" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M36 16C36 9.37258 30.6274 4 24 4V16H36Z" stroke="#777" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 4C17.3726 4 12 9.37258 12 16H24V4Z" stroke="#777" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>滚动鼠标滚轮以继续浏览</span>
+      </div>
     </div>
 
     <div class="hero-image-container">
@@ -22,14 +26,32 @@ const { blogSubTitle = '' } = Astro.props;
     </div>
 </div>
 
+<script is:inline>
+    function adjustFirstScreenHeight() {
+      const headerNode = window.getComputedStyle(document.getElementById('nav-header'));
+      const stickyNavNode = window.getComputedStyle(document.getElementById('sticky-bar'));
+      const firstScreenNode = document.getElementById('first-screen');
+      const headerHeight = parseFloat(headerNode.height.slice(0, headerNode.height.length - 2));
+      const stickyNavHeight = parseFloat(stickyNavNode.height.slice(0, stickyNavNode.height.length - 2));
+      if(stickyNavNode.display == 'none') computeHeight = headerHeight;
+      else computeHeight = headerHeight + stickyNavHeight;
+      firstScreenNode.setAttribute("style", "height: " + (window.innerHeight - computeHeight) + 'px');
+      console.log(window.innerHeight - computeHeight,firstScreenNode)
+    }
+    
+    window.addEventListener('resize', adjustFirstScreenHeight);
+    window.addEventListener('load', adjustFirstScreenHeight);
+</script>
+
 <style>
     .home-container {
       align-items: center;
       display: flex;
-      flex: 1;
+      /* flex: 1; */
       justify-content: center;
-      margin: 2em 0;
-      min-height: 400px;
+      height: 818.41px;
+      /* margin: 2em 0; */
+      /* min-height: 400px; */
     }
   
     .home-copy {
@@ -68,6 +90,21 @@ const { blogSubTitle = '' } = Astro.props;
       max-width: 550px;
       margin-bottom: 1em;
     }
+
+    .mouse-hint span {
+      color: #777;
+      vertical-align: middle;
+    }
+
+    .mouse-hint {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+    
+    .mouse-hint svg {
+        margin-bottom: .5px;
+    }
   
     @media (max-width: 1200px) {
       p {
@@ -88,6 +125,10 @@ const { blogSubTitle = '' } = Astro.props;
         flex: 0;
         padding-bottom: 2em;
         text-align: center;
+      }
+
+      .mouse-hint {
+        justify-content: center;
       }
     }
   </style>

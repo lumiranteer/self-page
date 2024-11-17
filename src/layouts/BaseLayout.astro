@@ -11,7 +11,7 @@ export interface Props {
 }
 const { title, description, permalink, current } = Astro.props;
 ---
-<html lang="en">
+<html>
 <head>
   <BaseHead title={title} description={description} permalink={permalink} />
 </head>
@@ -41,7 +41,7 @@ const { title, description, permalink, current } = Astro.props;
     position: relative;
     margin: 0 auto;
     max-width: 1400px;
-    padding: 1em 2em;
+    padding: 0em 2em;
     box-sizing: border-box;
     width: 100%;
     display: flex;

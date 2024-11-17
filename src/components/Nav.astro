@@ -79,7 +79,7 @@ var { current = '' , classType = 'normal-bar'} = Astro.props;
     }
 
     nav.sticky-bar.nav-sticky-active {
-      background-color: rgb(255 255 255 / 60%);
+      background-color: var(--nav-background-color);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       border-radius: 0px;
@@ -94,7 +94,7 @@ var { current = '' , classType = 'normal-bar'} = Astro.props;
 </style>
 
 <div id="navbar-sentinal"></div>
-<nav class={classType} id="nav">
+<nav class={classType} id={classType}>
   <a class={current === "" ? "selected" : ""} href='/'>首页</a>
   <a class={current === "blog" ? "selected" : ""} href='/blog'>博客</a>
   <a class={current === "about" ? "selected" : ""} href='/about'>关于</a>

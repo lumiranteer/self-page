@@ -1,10 +1,10 @@
 import { c as createAstro, a as createComponent, r as renderTemplate, d as renderComponent, m as maybeRenderHead } from '../chunks/astro/server_BwJvkVnV.mjs';
 import 'kleur/colors';
-import { $ as $$BaseLayout } from '../chunks/BaseLayout_Cjn1_ezn.mjs';
+import { $ as $$BaseLayout } from '../chunks/BaseLayout_CXkzO8JX.mjs';
 /* empty css                                 */
 export { renderers } from '../renderers.mjs';
 
-const $$Astro = createAstro("https://astro-blog-template.netlify.app");
+const $$Astro = createAstro("https://lumirant.top");
 const $$About = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$About;

@@ -1,27 +1,69 @@
 <footer>
-  <span>
-    &copy; 2023 - {new Date().getFullYear()} Lumirant.top All Right Reserved<br>
-    <div class="beian">
-      <div class="upyun">
-        <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="../../assets/upyunlogo.png" style="width: 50px;" /></a>
-      </div>
+  <div class="footer-item" style="margin-bottom: 20px;font-size: 18px;">
+    <div class="footer-item-side">
+      <a href="https://lumirant.top">Lumirant</a>
+    </div>
+    <div class="footer-item-side" style="display: flex;gap: 20px;flex-wrap: nowrap;">
+      <div><a href="./">首页</a></div>
+      <div><a href="./blog">博客</a></div>
+      <div><a href="./about">关于</a></div>
+    </div>
+  </div>
+  <hr class="footer-hr" />
+  <div class="footer-item item-below-line">
+    <div class="footer-item-side">
+      &copy; 2023 - {new Date().getFullYear()} Lumirant.top
+    </div>
+    <div class="footer-item-side"></div>
+  </div>
+  <div class="footer-item item-below-line">
+    <div class="footer-item-side beian">
       <div style="display: flex;align-items: flex-start;gap: 3px;">
         <img src="../../assets/mpsbeian.png" style="width: 16px;" /><a href="https://beian.mps.gov.cn/#/query/webSearch?code=44030002005026" rel="noreferrer" target="_blank">粤公网安备44030002005026</a>
       </div>
+      <p class="footer-item-des"> | </p>
       <a href="http://beian.miit.gov.cn">粤ICP备2024313822号</a>
     </div>
-  </span>
+    <div class="footer-item-side">
+      <div class="upyun">
+        <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="../../assets/upyunlogo.png" style="width: 50px;" /></a>
+      </div>
+    </div>
+  </div>
 </footer>
 
 <style>
   footer {
     color: var(--text-secondary);
-    font-size: .8em;
+    font-size: 1rem;
     margin: 1em auto;
     max-width: 1400px;
     padding: 1em 2em;
     text-align: center;
-    width: 100%;
+    width: 60%;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    line-height: 1.25rem;
+  }
+
+  footer .footer-item .footer-item-side a {
+    text-decoration: none;
+  }
+
+  .footer-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .footer-item-des {
+    color: rgb(107 111 114 / 30%);
+  }
+
+  .footer-hr {
+    border: 0.1px solid rgb(163 163 163 / 10%);
   }
 
   .beian {
@@ -29,13 +71,34 @@
     justify-content: center;
     gap: 10px;
     align-items: center;
+    height: 30px;
+  }
+
+  @media (max-width: 1000px) {
+    footer {
+      width: 80%;
+    }
+  }
+
+  @media (max-width: 700px) {
+    footer {
+      width: 90%;
+    }
   }
 
   @media (max-width: 575px) {
+    .item-below-line {
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .footer-item-des {
+      display: none;
+    }
+
     .beian {
       flex-direction: column;
-      align-items: center;
-      gap: 0px;
     }
   }
 </style>

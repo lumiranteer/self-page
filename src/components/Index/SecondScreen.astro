@@ -1,3 +1,88 @@
-<div>
-    
+<div class="second-screen-container">
+    <div class="second-screen">
+        <div class="title">
+            <h1>Hi，我是Lumirant</h1>
+        </div>
+
+        <div class="self-introduce">
+            <p>欢迎来到我的个人主页！</p>
+            <p>在一切身份介绍的开始前，我首先是一名高中生。</p>
+            <p>有很多网名，最常用的是「Lumirant」和「蓝海潮生」。</p>
+            <p>我2006年在深圳南山出生，从小在深圳长大。</p>
+            <p>大部分时间都待在广东省内，偶尔去外地旅旅游。</p>
+            <p>理科生，但是理科并不好……</p>
+            <p>是<a href="https://baike.baidu.com/item/%E7%AB%9E%E9%80%89%E8%80%85%E5%9E%8B%E4%BA%BA%E6%A0%BC/60185931">「ENFP竞选者」</a>人格，欢迎和我交朋友！</p>
+            <p>平时除了学习外，业余时间喜欢研究一点自己喜欢的东西。</p>
+            <p>我天生对计算机具有满腔热忱，很早就一直在自学各种技术。</p>
+            <p>喜欢研究新东西，或者也可以称我是<span>「Self Hoster」</span>？</p>
+            <p>平时也会捣鼓一些自己感兴趣的东西，或者自己做点小东西。</p>
+            <p>有时间的话，欢迎参观我的<a href="#">实验室</a>！</p>
+            <p>原本想考计算机专业，结果选科没选对，高考报不了。（丧</p>
+            <p>（不过就计算机行业的现状来看，我估计也不会报了hhh）</p>
+            <p>平时有空会写写博客，也欢迎关注我的公众号「蓝海潮生」·</p>
+            <p>总之，希望你在这个网站收获好情绪！</p>
+            <p></p>
+        </div>
+    </div>
 </div>
+
+<style>
+    .second-screen-container {
+      align-items: center;
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      margin: 2em 0;
+      min-height: 400px;
+    }
+  
+    .second-screen {
+      flex: 1;
+      padding: 0 1em;
+    }
+
+    .title {
+      font-weight: 700;
+      margin-bottom: 1em;
+      line-height: 1.3;
+      margin-top: 3em;
+    }
+
+    .title h1 {
+        font-size: xxx-large;
+        text-align: center;
+    }
+  
+    .second-screen p {
+      font-size: 1.4em;
+    }
+  
+    .self-introduce p {
+      line-height: 30px;
+      text-align: center;
+    }
+  
+    .caption {
+      font-size: .8em;
+      font-style: italic;
+      text-align: left;
+    }
+  
+    @media (max-width: 1200px) {
+      p {
+        font-size: 1.2em;
+      }
+    }
+  
+    @media (max-width: 800px) {
+      .second-screen-container {
+        flex-direction: column;
+      }
+  
+      .second-screen {
+        flex: 0;
+        padding-bottom: 2em;
+        text-align: center;
+      }
+    }
+  </style>
