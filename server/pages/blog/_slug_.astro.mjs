@@ -1,6 +1,6 @@
 import { a as createComponent, r as renderTemplate, m as maybeRenderHead, c as createAstro, d as renderComponent, u as unescapeHTML } from '../../chunks/astro/server_BwJvkVnV.mjs';
 import 'kleur/colors';
-import { $ as $$BaseLayout } from '../../chunks/BaseLayout_p3ozQLBK.mjs';
+import { $ as $$BaseLayout } from '../../chunks/BaseLayout_DLDRCmBG.mjs';
 import 'clsx';
 /* empty css                                     */
 import { marked } from 'marked';

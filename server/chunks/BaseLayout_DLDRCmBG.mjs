@@ -209,7 +209,7 @@ const $$Nav = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$2, $$props, $$slots);
   Astro2.self = $$Nav;
   var { current = "", classType = "normal-bar" } = Astro2.props;
-  return renderTemplate`${maybeRenderHead()}<div id="navbar-sentinal" data-astro-cid-dmqpwcec></div> <nav${addAttribute(classType, "class")} id="nav" data-astro-cid-dmqpwcec> <a${addAttribute(current === "" ? "selected" : "", "class")} href="/" data-astro-cid-dmqpwcec>首页</a> <a${addAttribute(current === "blog" ? "selected" : "", "class")} href="/blog" data-astro-cid-dmqpwcec>博客</a> <a${addAttribute(current === "about" ? "selected" : "", "class")} href="/about" data-astro-cid-dmqpwcec>关于</a> <div class="theme-toggle-container" data-astro-cid-dmqpwcec> ${renderComponent($$result, "ThemeToggleButton", ThemeToggleButton, { "client:load": true, "client:component-hydration": "load", "client:component-path": "/home/runner/work/self-page/self-page/src/components/ThemeToggleButton.svelte", "client:component-export": "default", "data-astro-cid-dmqpwcec": true })} </div> </nav>`;
+  return renderTemplate`${maybeRenderHead()}<div id="navbar-sentinal" data-astro-cid-dmqpwcec></div> <nav${addAttribute(classType, "class")}${addAttribute(classType, "id")} data-astro-cid-dmqpwcec> <a${addAttribute(current === "" ? "selected" : "", "class")} href="/" data-astro-cid-dmqpwcec>首页</a> <a${addAttribute(current === "blog" ? "selected" : "", "class")} href="/blog" data-astro-cid-dmqpwcec>博客</a> <a${addAttribute(current === "about" ? "selected" : "", "class")} href="/about" data-astro-cid-dmqpwcec>关于</a> <div class="theme-toggle-container" data-astro-cid-dmqpwcec> ${renderComponent($$result, "ThemeToggleButton", ThemeToggleButton, { "client:load": true, "client:component-hydration": "load", "client:component-path": "/home/runner/work/self-page/self-page/src/components/ThemeToggleButton.svelte", "client:component-export": "default", "data-astro-cid-dmqpwcec": true })} </div> </nav>`;
 }, "/home/runner/work/self-page/self-page/src/components/Nav.astro", void 0);
 
 var __freeze = Object.freeze;
@@ -221,7 +221,7 @@ const $$Header = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$1, $$props, $$slots);
   Astro2.self = $$Header;
   const { current = "" } = Astro2.props;
-  return renderTemplate(_a || (_a = __template(["", '<div id="header-sentinal" data-astro-cid-3ef6ksr2></div> <header class="nav-header" data-astro-cid-3ef6ksr2> ', " ", " ", " </header> ", ` <script>
+  return renderTemplate(_a || (_a = __template(["", '<div id="header-sentinal" data-astro-cid-3ef6ksr2></div> <header class="nav-header" id="nav-header" data-astro-cid-3ef6ksr2> ', " ", " ", " </header> ", ` <script>
     // \u4EE3\u7801\u7075\u611F\u6765\u6E90\u4E8Eskywt.cn
     //Astro\u5BF9\u4E8Edocument\u7684\u652F\u6301\u4E0D\u592A\u53CB\u597D
     var observer;
@@ -304,8 +304,9 @@ window.addEventListener('resize', cancalDebounce);
 }, "/home/runner/work/self-page/self-page/src/components/Header.astro", void 0);
 
 const $$Footer = createComponent(($$result, $$props, $$slots) => {
-  return renderTemplate`${maybeRenderHead()}<footer data-astro-cid-sz7xmlte> <span data-astro-cid-sz7xmlte>
-&copy; 2023 - ${(/* @__PURE__ */ new Date()).getFullYear()} Lumirant.top All Right Reserved<br data-astro-cid-sz7xmlte> <div class="beian" data-astro-cid-sz7xmlte> <div class="upyun" data-astro-cid-sz7xmlte> <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" data-astro-cid-sz7xmlte><img src="../../assets/upyunlogo.png" style="width: 50px;" data-astro-cid-sz7xmlte></a> </div> <div style="display: flex;align-items: flex-start;gap: 3px;" data-astro-cid-sz7xmlte> <img src="../../assets/mpsbeian.png" style="width: 16px;" data-astro-cid-sz7xmlte><a href="https://beian.mps.gov.cn/#/query/webSearch?code=44030002005026" rel="noreferrer" target="_blank" data-astro-cid-sz7xmlte>粤公网安备44030002005026</a> </div> <a href="http://beian.miit.gov.cn" data-astro-cid-sz7xmlte>粤ICP备2024313822号</a> </div> </span> </footer> `;
+  return renderTemplate`${maybeRenderHead()}<footer data-astro-cid-sz7xmlte> <div class="footer-item" style="margin-bottom: 20px;font-size: 18px;" data-astro-cid-sz7xmlte> <div class="footer-item-side" data-astro-cid-sz7xmlte> <a href="https://lumirant.top" data-astro-cid-sz7xmlte>Lumirant</a> </div> <div class="footer-item-side" style="display: flex;gap: 20px;flex-wrap: nowrap;" data-astro-cid-sz7xmlte> <div data-astro-cid-sz7xmlte><a href="./" data-astro-cid-sz7xmlte>首页</a></div> <div data-astro-cid-sz7xmlte><a href="./blog" data-astro-cid-sz7xmlte>博客</a></div> <div data-astro-cid-sz7xmlte><a href="./about" data-astro-cid-sz7xmlte>关于</a></div> </div> </div> <hr class="footer-hr" data-astro-cid-sz7xmlte> <div class="footer-item item-below-line" data-astro-cid-sz7xmlte> <div class="footer-item-side" data-astro-cid-sz7xmlte>
+&copy; 2023 - ${(/* @__PURE__ */ new Date()).getFullYear()} Lumirant.top
+</div> <div class="footer-item-side" data-astro-cid-sz7xmlte></div> </div> <div class="footer-item item-below-line" data-astro-cid-sz7xmlte> <div class="footer-item-side beian" data-astro-cid-sz7xmlte> <div style="display: flex;align-items: flex-start;gap: 3px;" data-astro-cid-sz7xmlte> <img src="../../assets/mpsbeian.png" style="width: 16px;" data-astro-cid-sz7xmlte><a href="https://beian.mps.gov.cn/#/query/webSearch?code=44030002005026" rel="noreferrer" target="_blank" data-astro-cid-sz7xmlte>粤公网安备44030002005026</a> </div> <p class="footer-item-des" data-astro-cid-sz7xmlte> | </p> <a href="http://beian.miit.gov.cn" data-astro-cid-sz7xmlte>粤ICP备2024313822号</a> </div> <div class="footer-item-side" data-astro-cid-sz7xmlte> <div class="upyun" data-astro-cid-sz7xmlte> <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" data-astro-cid-sz7xmlte><img src="../../assets/upyunlogo.png" style="width: 50px;" data-astro-cid-sz7xmlte></a> </div> </div> </div> </footer> `;
 }, "/home/runner/work/self-page/self-page/src/components/Footer.astro", void 0);
 
 const $$Astro = createAstro("https://lumirant.top");
@@ -313,7 +314,7 @@ const $$BaseLayout = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$BaseLayout;
   const { title, description, permalink, current } = Astro2.props;
-  return renderTemplate`<html lang="en" data-astro-cid-37fxchfa> <head>${renderComponent($$result, "BaseHead", $$BaseHead, { "title": title, "description": description, "permalink": permalink, "data-astro-cid-37fxchfa": true })}${renderHead()}</head> <body data-astro-cid-37fxchfa> <div class="layout" data-astro-cid-37fxchfa> ${renderComponent($$result, "Header", $$Header, { "current": current, "data-astro-cid-37fxchfa": true })} <main data-astro-cid-37fxchfa> ${renderSlot($$result, $$slots["default"])} </main> ${renderComponent($$result, "Footer", $$Footer, { "data-astro-cid-37fxchfa": true })} </div> </body></html>`;
+  return renderTemplate`<html data-astro-cid-37fxchfa> <head>${renderComponent($$result, "BaseHead", $$BaseHead, { "title": title, "description": description, "permalink": permalink, "data-astro-cid-37fxchfa": true })}${renderHead()}</head> <body data-astro-cid-37fxchfa> <div class="layout" data-astro-cid-37fxchfa> ${renderComponent($$result, "Header", $$Header, { "current": current, "data-astro-cid-37fxchfa": true })} <main data-astro-cid-37fxchfa> ${renderSlot($$result, $$slots["default"])} </main> ${renderComponent($$result, "Footer", $$Footer, { "data-astro-cid-37fxchfa": true })} </div> </body></html>`;
 }, "/home/runner/work/self-page/self-page/src/layouts/BaseLayout.astro", void 0);
 
 export { $$BaseLayout as $ };
