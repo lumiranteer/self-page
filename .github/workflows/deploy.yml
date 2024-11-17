@@ -45,7 +45,9 @@ jobs:
           ARGS : "-avzr --delete"
           TARGET: ${{ secrets.TARGET_DIR }}
           EXCLUDE: "/.astro/, /node_modules/, /.git/, /.github/, /.vscode/, /.gitattributes, /LICENSE, /screenshot.png"
+          SCRIPT_BEFORE: "echo 'deleting node_modules' && cd ${{ secrets.TARGET_DIR }} && cd dist && npm run clean"
           SCRIPT_AFTER: "echo 'Executing autoUpdate.sh...' && cd ${{ secrets.TARGET_DIR }} && ./autoUpdate.sh"
+          SCRIPT_BEFORE_REQUIRED: true
           SCRIPT_AFTER_REQUIRED : true
       # - name: Deploy to server
       #   run: |
